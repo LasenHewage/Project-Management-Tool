@@ -1,0 +1,51 @@
+# Maven target directory
+/target/
+
+# Logs
+logs/
+*.log
+
+# Eclipse/IntelliJ IDEA project files
+/.idea/
+/*.iml
+/.classpath
+/.project
+/.settings/
+/out/
+
+# IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
+# Spring Boot specific files
+/*.jar
+/*.war
+/*.ear
+
+# Database files (for example, MySQL)
+*.sql
+*.db
+*.sqlite
+
+# MacOS
+.DS_Store
+
+# Generated files
+*.class
+
+# Temporary files
+*.tmp
+*.swp
+
+# Dependency directories
+/.mvn/
+/node_modules/
+
+# Operating system files
+Thumbs.db
+.DS_Store
