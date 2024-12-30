@@ -1,4 +1,4 @@
-package com.lasen.projectmanagementsystem.config.AppConfig;
+package com.lasen.projectmanagementsystem.config;
 
 public class JwtConstant {
 
