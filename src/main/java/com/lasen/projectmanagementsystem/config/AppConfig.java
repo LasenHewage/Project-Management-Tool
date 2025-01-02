@@ -19,9 +19,12 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 public class AppConfig {
+
+    @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.sessionManagement(Management -> Management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("api/**").authenticated()
+                .authorizeHttpRequests(Authorize -> Authorize
+                        .requestMatchers("api/**").authenticated()
                         .anyRequest().permitAll())
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())

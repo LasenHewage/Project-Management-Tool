@@ -22,12 +22,22 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+        System.out.println("Request URI: " + request.getRequestURI());
+
+        // Skip token validation for the signup endpoint
+        if (request.getRequestURI().equals("/auth/signup")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String jwt = request.getHeader(JwtConstant.JWT_HEADER);
 
         if(jwt!=null){
             jwt=jwt.substring(7);
             try{
-                SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRRET_KEY.getBytes());
+                System.out.println("----------signup controller-----------");
+                SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
                 Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
 
                 String email = String.valueOf(claims.get("email"));

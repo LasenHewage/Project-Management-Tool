@@ -12,21 +12,21 @@ import java.util.Date;
 
 public class JwtProvider {
 
-//    SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRRET_KEY.getBytes());
-
-//    String authorities = String.valueOf(claims.get("authorities"));
-
-    static SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRRET_KEY.getBytes());
+    static SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
     public static String generateToken (Authentication auth){
 
-        Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-        String jwt = Jwts.builder().setIssuedAt(new Date())
+//        Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+//        String jwt = Jwts.builder().setIssuedAt(new Date())
+//                .setExpiration(new Date(new Date().getTime()+86400000))
+//                .claim("email",auth.getName())
+//                .signWith(key)
+//                .compact();
+        return Jwts.builder().setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime()+86400000))
                 .claim("email",auth.getName())
                 .signWith(key)
                 .compact();
-        return jwt;
     }
 
     public static String getEmailFromToken (String jwt){
