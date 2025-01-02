@@ -1,9 +1,6 @@
 package com.lasen.projectmanagementsystem.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -13,5 +10,6 @@ public class Issue {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
+    @ManyToOne
+    private User assignee;
 }
