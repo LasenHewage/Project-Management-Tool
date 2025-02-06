@@ -70,4 +70,15 @@ public class Chat {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class InviteRequest {
+
+        private Long projectId;
+
+        private String email;
+
+    }
 }
