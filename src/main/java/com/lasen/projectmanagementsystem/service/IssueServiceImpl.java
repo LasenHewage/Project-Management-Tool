@@ -42,6 +42,7 @@ public class IssueServiceImpl implements IssueService{
        Project project = projectService.getProjectById(issueRequest.getProjectId());
 
        Issue issue = new Issue();
+
        issue.setTitle(issueRequest.getTitle());
        issue.setDescription(issueRequest.getDescription());
        issue.setStatus(issueRequest.getStatus());
